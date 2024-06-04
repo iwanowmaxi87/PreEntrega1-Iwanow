@@ -37,10 +37,9 @@ input[type=submit]:hover {
 
 .fecha {
   align-items: center;
-  background-color: #080747;
   font-family: "Open Sans";
   text-align: center;
-  color: #e8eaec;
+  color: #080747;
 }
 
 /*# sourceMappingURL=main.css.map */
