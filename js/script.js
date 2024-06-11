@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para calcular el pago mensual del préstamo
     function calcularPagoMensual(monto, tasaInteresAnual, meses) {
-        const tasaInteresMensual = tasaInteresAnual / 12 / 100;
-        const pagoMensual = (monto * tasaInteresMensual) / (1 - Math.pow(1 + tasaInteresMensual, -meses));
-        return pagoMensual;
+        const porcentaje = tasaInteresAnual * 0.01;
+        const porcentajeSacado = (monto * porcentaje) + monto;
+        const tasaInteresMensual = porcentajeSacado / meses;
+        return tasaInteresMensual;
     }
 
     // Función para manejar el evento de envío del formulario
