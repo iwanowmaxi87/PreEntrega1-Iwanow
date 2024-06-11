@@ -18,12 +18,12 @@ body {
     align-items: center;
     margin-bottom: 20px;
     padding: 10px 30px;
-    background-color: #333;
+    background-color: #007894;
     color: white;
 }
 
 .logo {
-    height: 80px;
+    height: 50px;
     width: auto;
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .nav-links :hover {
-    background-color: #d4850d;
+    background-color: #00586D;
     border-radius: 10px;
     padding: 10px;
     
@@ -59,7 +59,7 @@ label, input {
 input[type="submit"] {
     width: auto;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #007894;
     color: white;
     border: none;
     border-radius: 4px;
@@ -67,7 +67,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #d4850d;
+    background-color: #00586D;
     
 }
 
@@ -85,10 +85,10 @@ input[type="submit"]:hover {
 
 .footer {
     font-family: $font-open;
-    background-color: #333;
+    background-color: #007894;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 5px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
