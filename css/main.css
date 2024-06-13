@@ -1,6 +1,84 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap");
+.navbar {
+  font-family: "Roboto", sans-serif;
+}
+
+#productos, #carrito {
+  margin-bottom: 20px;
+}
+
+.carritoCompras {
+  font-family: "Roboto", sans-serif;
+}
+
+.productos {
+  font-family: "Roboto", sans-serif;
+}
+
+.producto, .producto-carrito {
+  border: 1px solid #f00eca;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Open Sans";
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #00586D;
+  color: white;
+}
+
+input[type=number] {
+  width: 50px;
+  margin-right: 10px;
+}
+
+#total {
+  font-weight: bold;
+}
+
+/* styles.css */
+.inicioTurnos {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#generador-turnos {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#lista-turnos {
+  list-style-type: none;
+  padding: 0;
+}
+
+input[type=date] {
+  margin-bottom: 20px;
+  padding: 5px;
+  width: calc(100% - 10px);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -12,10 +90,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 10px 30px;
   background-color: #007894;
   color: white;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -27,12 +104,13 @@ body {
   color: white;
   margin: 0 15px;
   text-decoration: none;
+  padding: 3px 15px;
 }
 
 .nav-links :hover {
-  background-color: #00586D;
+  color: #00586D;
+  background-color: #ccc;
   border-radius: 10px;
-  padding: 10px;
 }
 
 .container {
@@ -40,7 +118,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
 }
