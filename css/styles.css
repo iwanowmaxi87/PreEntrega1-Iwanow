@@ -25,23 +25,24 @@
       color: white;
       padding: 10px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      position: relative;
+      box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.5);
       font-weight: bold;
+      
   }
   
   .nav-logo {
       margin: 10px 20px;     
-      width: 50px;
+      width: 200px;
       height: auto;
-      display: flex;
-      position: relative;
+      
 }
   
   .nav-menu {
       display: flex;
       gap: 10px;
+      
   }
   
   .nav-menu button {
@@ -54,6 +55,7 @@
       font-size: 16px;
       transition: background-color 0.3s ease;
       border-radius: 4px;
+      
   }
   
   .nav-menu button:hover {

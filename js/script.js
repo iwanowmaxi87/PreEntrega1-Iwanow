@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Elemento para el logo
 
         const logo = document.createElement('img');
-        logo.src = './img/icono.png'; 
+        logo.src = './img/icono2.png'; 
         logo.alt = 'logo';
         logo.className = 'nav-logo';       
         nav.appendChild(logo);
