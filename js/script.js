@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Elemento para el logo
 
         const logo = document.createElement('img');
-        logo.src = '../img/icono.png'; 
-        logo.alt = 'Logo';
+        logo.src = './img/icono.png'; 
+        logo.alt = 'logo';
         logo.className = 'nav-logo';       
         nav.appendChild(logo);
         
@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
     box1.className = 'box';
     const figure = document.createElement('figure');
     const aLogo = document.createElement('a');
-    aLogo.href = '../index.html';
+    aLogo.href = '/index.html';
     const imgLogo = document.createElement('img');
-    imgLogo.src = '../img/icono.png';
+    imgLogo.src = './img/icono.png';
     imgLogo.alt = 'logo de footer';
     aLogo.appendChild(imgLogo);
     figure.appendChild(aLogo);
@@ -295,12 +295,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
-    function addToCart(house) {
+    function addToCart(viaje) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(house);
+        cart.push(viaje);
         localStorage.setItem('cart', JSON.stringify(cart));
         Swal.fire({
-            title: `${house.name} 
+            title: `${viaje.name} 
             se agrego al carrito!`,
             icon: 'success',
             showConfirmButton: false,
