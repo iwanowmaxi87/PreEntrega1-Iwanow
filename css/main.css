@@ -58,14 +58,50 @@
       
   }
   
-  .nav-menu button:hover {
+    .nav-menu button:hover {
       background-color: #183153;
       color:white
       
   }
+      /* Estilos para el menú hamburguesa */
+    .icon {
+      color: white;
+      display: none;
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      
+    }
+   
     
-  
-  .switch {    
+    /* Estilos responsive para el menú hamburguesa */
+    @media (max-width: 768px) {
+    .nav-menu button {
+        display: none;
+    }
+    .icon{
+        display: block;
+    }
+    .icon:hover .icon-content {
+      display: block;
+    }
+    }
+
+    .nav-menu.responsive{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+        
+    }
+    .nav-menu.responsive button {
+       display: block;
+       
+    }
+
+
+    .switch {    
       margin: auto;  
       padding: 10px 20px;
       position:relative;
@@ -120,7 +156,8 @@
       height: 24px;
     }
     
-    /* .switch:hover */.sun svg {
+    /* .switch:hover */
+    .sun svg {
       animation: rotate 15s linear infinite;
     }
     
@@ -252,11 +289,7 @@
       background-color: #0056b3;
   }
   
-  
-  
-  
-  
-  
+ 
   
   /* Estilos para el carrito */
   .container {
@@ -691,6 +724,7 @@
     }
   }
   
+  /* Aerolineas */
   
   .airline-item a[data-v-097c0db5] {
     display: flex;    

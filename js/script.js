@@ -11,20 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // NAVEGADOR
     function renderNav() {
-        
+        const app = document.getElementById('app'); 
         const nav = document.createElement('nav');     
-        
         const navMenu = document.createElement('div');
         navMenu.className = 'nav-menu';
-
-        // Elemento para el logo
-
+    
         const logo = document.createElement('img');
         logo.src = './img/icono2.png'; 
         logo.alt = 'logo';
         logo.className = 'nav-logo';       
         nav.appendChild(logo);
-        
     
         const homeButton = document.createElement('button');
         homeButton.textContent = 'Home';
@@ -35,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartButton.addEventListener('click', renderCart);
     
         const aboutButton = document.createElement('button');
-        aboutButton.textContent = 'Nuestros beneficios';
+        aboutButton.textContent = 'Beneficios';
         aboutButton.addEventListener('click', renderAbout);
     
         const contactButton = document.createElement('button');
@@ -44,46 +40,48 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const themeSwitch = document.createElement('label');
         themeSwitch.className = 'switch';
-
         const sunIcon = '<span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>';
         const moonIcon = '<span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg></span>';
-
+    
         themeSwitch.innerHTML = `
             ${moonIcon}
-            
             <input type="checkbox" class="input">
             <span class="slider"></span>
-            
             ${sunIcon}
         `;
-
+    
         const themeCheckbox = themeSwitch.querySelector('.input');
-
         themeCheckbox.addEventListener('change', function() {
             document.body.classList.toggle('dark-theme', this.checked);
-            // Guardar el estado del tema en localStorage
             localStorage.setItem('theme', this.checked ? 'dark' : 'light');
         });
-
+    
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-theme');
             themeCheckbox.checked = true;
         }
-
-
     
         // Botones al menú de navegación
         navMenu.appendChild(homeButton);
         navMenu.appendChild(cartButton);
         navMenu.appendChild(aboutButton);
         navMenu.appendChild(contactButton);
-        navMenu.appendChild(themeSwitch); 
+        navMenu.appendChild(themeSwitch);
     
-        
+        const menuIcon = document.createElement('button');
+        menuIcon.className = 'icon';
+        menuIcon.innerHTML = '<i class="fa fa-bars"></i>';
+        menuIcon.addEventListener('click', function() {
+            navMenu.classList.toggle('responsive');
+        });
+    
         nav.appendChild(navMenu);
+        nav.appendChild(menuIcon); 
         app.appendChild(nav);
     }
+    
+    document.addEventListener('DOMContentLoaded', renderNav);
 
 
 // FOOTER
@@ -168,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // seccion view home
+    // seccion home
     function renderHome() {
         clearContainer();
         const container = document.createElement('div');
@@ -200,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="boton-div">
                     <button data-id="${lugar.id}" class="btn btn-primary botonn"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/> </svg> Agregar al carrito</button>
                 </div>
-                <li data-v-097c0db5="" class="airline-item"><a data-v-097c0db5="" href="//www.aerolineas.com.ar/" class=""><img data-v-097c0db5="" width="20px" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/providers/favicon/svg/AR.svg" alt="Aerolineas_Argentinas"> Aerolíneas Argentinas</a></li>
+                <li data-v-097c0db5="" class="airline-item"><a data-v-097c0db5="" href="//www.aerolineas.com.ar/" class=""><img data-v-097c0db5="" width="10px" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/providers/favicon/svg/AR.svg" alt="Aerolineas_Argentinas"> Aerolíneas Argentinas</a></li>
             `;
             card.querySelector('button').addEventListener('click', () => addToCart(lugar));
             container.appendChild(card);
@@ -333,15 +331,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Cuando buscás en Travel Project nosotros nos encargamos del trabajo pesado.</p>
                 <p>Comparamos rápidamente miles de vuelos de todas las agencias de viajes y te mostramos el más barato y conveniente.</p>
                 <p>Así de simple.</p>
+            
+            <img data-v-1e5d41f9="" alt="home-footer-ahorra" data-src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Ahorra_2.svg" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Ahorra_2.svg" lazy="loaded">
+                <h3>Ahorrá tiempo y dinero</h3>
+                <p>Si un vuelo te interesa, nosotros nos ocupamos.</p>
+                <p>Creá gratis una alerta de precio y enterate primero si baja de precio.</p>
+                <p>Viajar se trata de disfrutar, por eso no queremos hacerte perder tiempo.</p>    
             </section>
             
             <section id="our-team">
+            
             <img data-v-1e5d41f9="" alt="home-footer-elegi" data-src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Elegi_2.svg" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Elegi_2.svg" lazy="loaded">
                 <h3>¡Llegá primero a las ofertas!</h3>
                 <p>Somos expertos en encontrar vuelos en oferta.</p>
                 <p>Cuando creemos que pueden interesarte, te avisamos inmediatamente para que puedas aprovecharlas.</p>
                 <p>Ah, ¿sabías que registrarse es gratis y no lleva más que un click?</p>
-                <div class="team-members">
+            
+            <img data-v-1e5d41f9="" alt="home-footer-redes" data-src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Redes_2.svg" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Redes_2.svg" lazy="loaded">
+                <h3>Seguinos</h3>
+                <p>Si un vuelo te interesa, nosotros nos ocupamos.</p>
+                <p>Creá gratis una alerta de precio y enterate primero si baja de precio.</p>
+                <p>Viajar se trata de disfrutar, por eso no queremos hacerte perder tiempo.</p>
+                
+            </section>
+    
+            <section id="why-choose-us">
+            <div class="team-members">
                     <div class="team-member">
                         <img src="https://st2.depositphotos.com/1518767/7621/i/450/depositphotos_76210335-stock-photo-smiling-travel-agent-looking-at.jpg" alt="Miembro del equipo">
                         <h4>John Doe</h4>
@@ -353,14 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Especialista en ventas y atención al cliente, comprometida con la satisfacción total.</p>
                     </div>
                 </div>
-            </section>
-    
-            <section id="why-choose-us">
-            <img data-v-1e5d41f9="" alt="home-footer-ahorra" data-src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Ahorra_2.svg" src="https://assets.turismocity.com/cdn-cgi/image/format=auto/img/home/Ahorra_2.svg" lazy="loaded">
-                <h3>Ahorrá tiempo y dinero</h3>
-                <p>Si un vuelo te interesa, nosotros nos ocupamos.</p>
-                <p>Creá gratis una alerta de precio y enterate primero si baja de precio.</p>
-                <p>Viajar se trata de disfrutar, por eso no queremos hacerte perder tiempo.</p>
             </section>
     
             
