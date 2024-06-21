@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartButton.addEventListener('click', renderCart);
     
         const aboutButton = document.createElement('button');
-        aboutButton.textContent = 'Descubrí todos los beneficios';
+        aboutButton.textContent = 'Nuestros beneficios';
         aboutButton.addEventListener('click', renderAbout);
     
         const contactButton = document.createElement('button');
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grupo2.className = 'grupo-2';
     const small = document.createElement('small');
     const currentYear = new Date().getFullYear();
-    small.innerHTML = `&copy; ${currentYear} <b>PAPER TRAVEL</b> Todos los derechos reservados`;
+    small.innerHTML = `&copy; ${currentYear} <b>Travel Project</b> Todos los derechos reservados`;
     grupo2.appendChild(small);
 
     footer.appendChild(grupo2);
