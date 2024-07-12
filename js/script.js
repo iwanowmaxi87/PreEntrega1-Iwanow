@@ -2,25 +2,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
 
-    //HEADER
+    //********************* HEADER *********************
     function renderHeader() {
         const header = document.createElement('header');               
         app.appendChild(header);
         
     }
+    
 
-    // NAVEGADOR
+    //********************* NAVEGADOR *********************
     function renderNav() {
         const app = document.getElementById('app'); 
         const nav = document.createElement('nav');     
         const navMenu = document.createElement('div');
         navMenu.className = 'nav-menu';
+        
+        // Crear el contenedor del video de fondo
+    const videoBackground = document.createElement('div');
+    videoBackground.className = 'video-background';
+
+    const video = document.createElement('video');
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.id = 'backgroundVideo';
+
+    const source = document.createElement('source');
+    source.src = 'https://assets.turismocity.com/img/video-space1920x490.mp4';
+    source.type = 'video/mp4';
+
+    video.appendChild(source);
+    videoBackground.appendChild(video);
+
+    // Agregar el video de fondo al body
+    document.body.appendChild(videoBackground);
     
         const logo = document.createElement('img');
         logo.src = './img/icono2.png'; 
         logo.alt = 'logo';
         logo.className = 'nav-logo';       
         nav.appendChild(logo);
+
+        
     
         const homeButton = document.createElement('button');
         homeButton.textContent = 'Home';
@@ -62,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
             themeCheckbox.checked = true;
         }
     
+
+
+        
         // Botones al menú de navegación
         navMenu.appendChild(homeButton);
         navMenu.appendChild(cartButton);
@@ -79,94 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
         nav.appendChild(navMenu);
         nav.appendChild(menuIcon); 
         app.appendChild(nav);
+        
     }
     
     document.addEventListener('DOMContentLoaded', renderNav);
 
-
-// FOOTER
-    function RenderFooter() {
-    const footer = document.createElement('footer');
-    footer.className = 'pie-pagina';
-
-    const grupo1 = document.createElement('div');
-    grupo1.className = 'grupo-1';
-
-    const box1 = document.createElement('div');
-    box1.className = 'box';
-    const figure = document.createElement('figure');
-    const aLogo = document.createElement('a');
-    aLogo.href = './index.html';
-    const imgLogo = document.createElement('img');
-    imgLogo.src = './img/icono.png';
-    imgLogo.alt = 'logo de footer';
-    aLogo.appendChild(imgLogo);
-    figure.appendChild(aLogo);
-    box1.appendChild(figure);
-    grupo1.appendChild(box1);
-
-    const box2 = document.createElement('div');
-    box2.className = 'box';
-    const h2SobreNosotros = document.createElement('h2');
-    h2SobreNosotros.textContent = 'Travel Project';
-    const p1 = document.createElement('p');
-    p1.textContent = 'Somos expertos en encontrar vuelos en oferta.';
-    const p2 = document.createElement('p');
-    p2.textContent = 'Cuando creemos que pueden interesarte, te avisamos inmediatamente para que puedas aprovecharlas';
-    box2.appendChild(h2SobreNosotros);
-    box2.appendChild(p1);
-    box2.appendChild(p2);
-    grupo1.appendChild(box2);
-
-    const box3 = document.createElement('div');
-    box3.className = 'box';
-    const h2Siguenos = document.createElement('h2');
-    h2Siguenos.textContent = 'NUESTRAS REDES';
-    const redSocial = document.createElement('div');
-    redSocial.className = 'red-social';
     
-    const socialMedia = [
-        {name:'whatsapp', URL:'https://web.whatsapp.com/'},
-        {name:'facebook', URL:'https://www.facebook.com/'},
-        {name:'twitter', URL:'https://x.com/home?lang=es'},
-        {name:'instagram', URL:'https://www.instagram.com/'},
-
-    ];
-    socialMedia.forEach(media => {
-        const a = document.createElement('a');
-        a.href = `${media.URL}`;
-        a.target="_blank"
-        a.className = `fa fa-${media.name} `;
-        redSocial.appendChild(a);
-    });
-    box3.appendChild(h2Siguenos);
-    box3.appendChild(redSocial);
-    grupo1.appendChild(box3);
-
-    footer.appendChild(grupo1);
-
-    const grupo2 = document.createElement('div');
-    grupo2.className = 'grupo-2';
-    const small = document.createElement('small');
-    const currentYear = new Date().getFullYear();
-    small.innerHTML = `&copy; ${currentYear} <b>Travel Project</b> Todos los derechos reservados`;
-    grupo2.appendChild(small);
-
-    footer.appendChild(grupo2);
-
-    document.getElementById('footer').appendChild(footer);
-    }
-
-
-
-
 
 
 // --------------------------------------------- HTML -------------------------------------------------------------------------------------------------------
 
 
 
-    // seccion home
+    //********************* seccion home *********************
     function renderHome() {
         clearContainer();
         const container = document.createElement('div');
@@ -205,11 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         app.appendChild(container);
+        
     }
 
 
 
-    // seccion view carrito
+//********************* seccion ver carrito *********************
     function renderCart() {
         clearContainer();
         const container = document.createElement('div');
@@ -293,6 +245,46 @@ document.addEventListener('DOMContentLoaded', () => {
     
         app.appendChild(container);
     }
+
+    function handlePagar(viaje) {
+        let title = `¡Estas seguro de comprar ${viaje.length} viaje${viaje.length > 1 ? 's' : ''}!`;
+    
+        Swal.fire({
+            title: title,
+            text: "¡No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Comprar!",
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('cart');
+    
+                const viajeNames = viaje.map(viaje => viaje.name).join(", ");
+                
+    
+                Swal.fire({
+                    title: "¡Comprado!",
+                    text: `Compraste ${viajeNames}`,
+                    icon: "success"
+                });
+    
+                renderCart();
+            } else {
+                Swal.fire({
+                    title: "¡Pago cancelado!",
+                    text: "Tu compra fue cancelada.",
+                    icon: "error"
+                });
+            }
+        });
+    }
+
     function addToCart(viaje) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(viaje);
@@ -303,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon: 'success',
             showConfirmButton: false,
             footer: '<span class="rojo"> Esta  informacion es importante!</span>',
-            timer: 1300,
+            timer: 1200,
             timerProgressBar: true,
             allowOutsideClick: false,
             allowEscapeKey: true,
@@ -318,7 +310,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
- // seccion about 
+//********************* Seccion Beneficios *********************
+
      function renderAbout() {
         clearContainer();
         const container = document.createElement('div');
@@ -380,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // seccion view contacto
+//********************* Seccion Contacto *********************
     function renderContact() {
         clearContainer();
         
@@ -441,14 +434,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpia el formulario después de enviarlo
         clearForm();
     }
-    function removeFromCart(house) {
+    function removeFromCart(viaje) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart = cart.filter(item => item.id !== house.id);
+        cart = cart.filter(item => item.id !== viaje.id);
         localStorage.setItem('cart', JSON.stringify(cart));
         renderCart();
         
         Swal.fire({
-            title: `${house.name} 
+            title: `${viaje.name} 
             se elimino al carrito!`,
             icon: 'error',
             showConfirmButton: false,
@@ -473,13 +466,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+//*******************Alert Notificaciones********************
 
+function showAlert() {
+    // Crear el contenedor de la alerta
+    const alertContainer = document.createElement('div');
+    alertContainer.className = 'custom-alert';
+
+    // Crear el elemento de la imagen
+    const alertImage = document.createElement('img');
+    alertImage.src = './img/iconoAlert.png'; 
+    alertImage.alt = 'Notification Image';
+    alertImage.className = 'alert-img';
+
+    // Crear el mensaje de la alerta
+    const alertMessage = document.createElement('p');
+    alertMessage.textContent = '¡Tu próximo viaje, aquí!';
+    alertMessage.className = 'alert-message';
+
+    const alertMessageDos = document.createElement('p');
+    alertMessageDos.textContent = 'Activá las notificaciones y recibí nuestras mejores ofertas';
+    alertMessageDos.className = 'alert-messageDos';
+
+    // Crear el botón para cerrar la alerta
+    const alertButton = document.createElement('button');
+    alertButton.textContent = 'Cerrar';
+    alertButton.className = 'alert-button';
+    alertButton.onclick = () => {
+        alertContainer.style.display = 'none';
+    };
+
+    // Añadir la imagen, mensaje y botón al contenedor de la alerta
+    alertContainer.appendChild(alertImage);
+    alertContainer.appendChild(alertMessage);
+    alertContainer.appendChild(alertMessageDos);
+    alertContainer.appendChild(alertButton);
+
+    // Añadir el contenedor de la alerta al body
+    document.body.appendChild(alertContainer);
+    }
     
 
 
    // Aqui corro la app
+   
     renderHeader();
     renderNav();
-    renderHome(); 
-    RenderFooter()
+    renderHome();
+    renderAbout();
+    renderContact(); 
+    showAlert();        
 });
+
+
+
+
+

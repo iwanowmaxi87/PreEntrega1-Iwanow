@@ -1,0 +1,140 @@
+/* Estilos generales */
+.contentPrestamo {
+    background: url("https://img.freepik.com/foto-gratis/pantalla-grafico-que-dice-palabra-financiera_188544-27324.jpg?size=626&ext=jpg&ga=GA1.1.867424154.1715731200&semt=sph") no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.85;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin: 20px;
+    display: block;
+}
+
+.form {
+    width: 100%;
+    max-width: 550px;
+    margin: 20px auto;
+    border: 2px solid transparent;
+}
+
+input {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #fdfef7;
+    border: #173441 1.8px solid;
+}
+
+fieldset {
+    border: #173441 2px solid;
+    border-radius: 10px;
+    background-color: #35caf0;
+    padding: 20px;
+}
+
+.buttonPrestmo {
+    background-color: #fdfef7;
+    border: #173441 1.8px solid;
+    width: 100%;
+    max-width: 110px;
+    font-family: 'Arial', sans-serif;
+    font-size: 15px;
+    border-radius: 2px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-weight: bold;
+}
+
+.tab {
+    border-collapse: collapse;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #fdfef7;
+    border: #173441 2px solid;
+    width: 100%;
+    max-width: 500px;
+    margin: 25px auto;
+}
+
+thead {
+    border: #173441 2px solid;
+    font-weight: bold;
+    background-color: yellow;
+}
+
+tr {
+    border: #173441 2px solid;
+    color: #333;
+}
+
+td {
+    border: #173441 2px solid;
+}
+
+tfoot {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .form {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .buttonPrestmo {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    input {
+        width: calc(100% - 20px);
+        margin-right: 0;
+    }
+
+    .tab {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    label {
+        margin: 10px 0;
+    }
+}
+
+/* Media Queries para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .form {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .buttonPrestmo {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tab {
+        width: 100%;
+        font-size: 12px;
+    }
+}
